@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>vb-SpringSecurity</title>
+        <link rel="stylesheet" type="text/css" href="../../css/style.css" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+        <h1 class="center">vb-SpringSecurity</h1>
+        <div th:switch="${currentUser}">
+        	<h3 class="center" th:case="null">Niet ingelogd</h3>
+        	<h3 class="center" th:case="*" th:text="'Welkom ' + ${currentUser}"></h3>
+        </div>
+        <br/>
+        <div id="content">  
+            <br/>
+            <a class="button center" th:href="@{/accounts}">Accountoverzicht</a>
+            <a class="button center red" th:href="@{/login}">Inloggen</a>
+        </div>
+    </body>
+</html>
+

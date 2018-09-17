@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Accounts</title> 
+        <link rel="stylesheet" type="text/css" href="../../css/style.css" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+        <div class="listTitle">
+            <h1 class="center">Account overzicht</h1>
+            <div th:switch="${currentUser}">
+	        	<h3 class="center" th:case="null">Niet ingelogd</h3>
+	        	<h3 class="center" th:case="*" th:text="'Welkom ' + ${currentUser}"></h3>
+        	</div>
+            <table id="accounts" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Accountnaam</th>
+                        <th>Wachtwoord</th>
+                        <th>Account type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="account:${accountList}">
+                        <td th:text="${account.username}"></td>
+                        <td>********</td>
+                        <td th:text="${account.accountType}"></td>
+                    </tr>
+                </tbody>            
+            </table>
+            <br/>
+            <a class="button center" th:href="@{/accounts/add}">Account toevoegen</a>
+            <a class="button center" th:href="@{/home}">Home</a>
+            <div class="center">
+                <form method="POST" th:action="@{/logout}">
+                    <input type="submit" value="Uitloggen"/>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

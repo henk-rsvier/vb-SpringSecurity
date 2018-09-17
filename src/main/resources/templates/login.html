@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html
+    xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>vb-SpringSecurity</title>
+        <link rel="stylesheet" type="text/css" href="../../css/style.css" th:href="@{/css/style.css}" />
+    </head>
+    <body>
+        <h1 class="center">Login</h1>
+        <div class="center error" th:if="${loginError}">
+            Inloggen mislukt, controleer uw gebruikersnaam en wachtwoord
+        </div>
+        <p class="center">Nieuw hier? Klik
+            <a th:href="@{/accounts/add}">hier</a> om een account te registreren.</p>
+        <br/>
+        <br/>
+        <!-- tag::thAction[] -->
+        <div class="formfields">
+        <form method="POST" th:action="@{/login}">
+            <!-- end::thAction[] -->
+            <label for="username">Gebruikersnaam: </label>
+            <input type="text" name="username"/><br/>
+            <label for="password">Wachtwoord: </label>
+            <input type="password" name="password"/><br/>
+            <input type="submit" value="Inloggen"/>
+        </form>
+        </div>
+    </body>
+</html>
